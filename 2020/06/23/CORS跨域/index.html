@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="跨域,浏览器," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在介绍跨域问题时，首先我们先了解一下为什么会有跨域问题，跨域这个概念是如何产生的  同源策略同源策略是一种约定，他保障了浏览器的安全，目前所有浏览器都遵循这个约定 什么是同源同源指的是两个网址，协议相同(http&#x2F;https)，域名相同，端口相同 为什么能保证浏览器安全如果没有同源策略，如果在一个网站中的cookie能被其他网站读取，那么用户的信息很有可能被泄漏，又或者在一个钓鱼网站中，插入某个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CORS跨域">
+<meta property="og:url" content="http://yoursite.com/2020/06/23/CORS%E8%B7%A8%E5%9F%9F/index.html">
+<meta property="og:site_name" content="萤火虫去哪了">
+<meta property="og:description" content="在介绍跨域问题时，首先我们先了解一下为什么会有跨域问题，跨域这个概念是如何产生的  同源策略同源策略是一种约定，他保障了浏览器的安全，目前所有浏览器都遵循这个约定 什么是同源同源指的是两个网址，协议相同(http&#x2F;https)，域名相同，端口相同 为什么能保证浏览器安全如果没有同源策略，如果在一个网站中的cookie能被其他网站读取，那么用户的信息很有可能被泄漏，又或者在一个钓鱼网站中，插入某个">
+<meta property="og:image" content="https://i.loli.net/2020/06/23/Y8QXsPvwk2hpb3H.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/23/uKgQPwBONlj3n2v.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/23/Fva19KhfU7oiJG3.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/23/YRW1INq6Vz9FDc4.png">
+<meta property="article:published_time" content="2020-06-23T00:56:54.000Z">
+<meta property="article:modified_time" content="2020-06-23T00:58:04.753Z">
+<meta property="article:author" content="朱杰">
+<meta property="article:tag" content="跨域">
+<meta property="article:tag" content="浏览器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/23/Y8QXsPvwk2hpb3H.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/06/23/CORS跨域/"/>
+
+
+
+
+
+  <title>CORS跨域 | 萤火虫去哪了</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">萤火虫去哪了</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/23/CORS%E8%B7%A8%E5%9F%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="朱杰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="萤火虫去哪了">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CORS跨域</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-23T08:56:54+08:00">
+                2020-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">浏览器</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>在介绍跨域问题时，首先我们先了解一下为什么会有跨域问题，跨域这个概念是如何产生的</p>
+</blockquote>
+<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><p>同源策略是一种约定，他保障了浏览器的安全，目前所有浏览器都遵循这个约定</p>
+<h3 id="什么是同源"><a href="#什么是同源" class="headerlink" title="什么是同源"></a>什么是同源</h3><p>同源指的是两个网址，协议相同(http/https)，域名相同，端口相同</p>
+<h3 id="为什么能保证浏览器安全"><a href="#为什么能保证浏览器安全" class="headerlink" title="为什么能保证浏览器安全"></a>为什么能保证浏览器安全</h3><p>如果没有同源策略，如果在一个网站中的cookie能被其他网站读取，那么用户的信息很有可能被泄漏，又或者在一个钓鱼网站中，插入某个支付页的iframe，在用户输入密码完后，该钓鱼网站能通过js读取到对应的dom，获取到用户的账号密码，那么这些信息便变得非常危险</p>
+<h3 id="非同源有什么影响"><a href="#非同源有什么影响" class="headerlink" title="非同源有什么影响"></a>非同源有什么影响</h3><p>如果是非同源，那么有下面几种规定</p>
+<ul>
+<li>cookie/localStorage/indexDB 无法读取</li>
+<li>dom无法获得</li>
+<li>ajax请求无法发送</li>
+</ul>
+<p>其中，ajax无法在非同源中发送，便引起了跨域的问题，很多时候，前后端在不同域名下，需要ajax请求数据时，我们就要规避这种ajax在非同源中无法发送的限制。对于跨域，有很多种解决办法，本次我们主要介绍最广泛使用的CORS（跨域资源共享）</p>
+<h2 id="关于CORS"><a href="#关于CORS" class="headerlink" title="关于CORS"></a>关于CORS</h2><p>cors需要浏览器和客户端同时支持，目前除了ie10以下，所有浏览器都支持</p>
+<p>浏览器在发送跨域请求时，会在请求头部带上一些附加信息，因此我们需要在服务端进行这些头部信息的设置</p>
+<h3 id="cors的请求"><a href="#cors的请求" class="headerlink" title="cors的请求"></a>cors的请求</h3><p>cors根据请求</p>
+<ul>
+<li><p>请求方法： post/get/head</p>
+</li>
+<li><p>请求头部不超过以下信息：Accept/Accept-language/Content-language/Last-Event-Id/Content-Type[只限于application/x-www-form-urlencoded、multipart/form-data、text/plain]</p>
+</li>
+</ul>
+<p>如果请求满足要求，那么该请求即为简单请求，否则，便为负责请求，例如一般的ajax请求 content-type:application/json即为非简单请求</p>
+<h3 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h3><p>一般发出简单请求，会在请求头部增加一个origin字段，标示该请求来源，服务器根据该值来判断是否要同意这次请求</p>
+<h3 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h3><p>非简单请求，会先向服务器发起一次请求方式为options的预检，若服务器允许请求，则会再次发次一次正式请求，否则报错</p>
+<p>在这次预检请求中，除了origin字段，还会在头部添加Access-Control-Request-Method/Access-Control-Allow-Headers字段，在服务器需要经过校验</p>
+<p>例如以下一个跨域的非简单请求</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 客户端请求</span></span><br><span class="line">axios.post(<span class="string">'http://10.101.156.30:3001/post'</span>, &#123;<span class="attr">id</span>:<span class="number">3</span>&#125;, data =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 服务端设置</span></span><br><span class="line">router.post(<span class="string">'/post'</span>, <span class="keyword">async</span> ctx =&gt; &#123;</span><br><span class="line">    ctx.body = &#123;</span><br><span class="line">        method: <span class="string">'post'</span>,</span><br><span class="line">        data: <span class="string">'test'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">app.use(bodyParser())</span><br></pre></td></tr></table></figure>
+
+<p>此时，预检请求返回的reponse header并没有携带任何关于CORS头部的信息，此时浏览器就会认定服务器不允许此时预检请求</p>
+<p><img src="https://i.loli.net/2020/06/23/Y8QXsPvwk2hpb3H.png" alt=""></p>
+<p><img src="https://i.loli.net/2020/06/23/uKgQPwBONlj3n2v.png" alt="image.png"></p>
+<p>由于在服务端没有进行相应的设置，此时传给服务端的请求中，origin来源与8080端口，而我们的服务则在3001端口，两者并不是同源，因此，默认跨域拒绝请求</p>
+<p>而如果我们在服务端进行设置，设置相应的Access-Control-Allow-Origin为我们客户端对应的地址</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加一个中间件，来全局处理我们的Access-Control-Allow-Origin</span></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next)=&gt; &#123;</span><br><span class="line">    ctx.set(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'http://localhost:8081'</span>);</span><br><span class="line">  	next()</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>此时在客户端继续访问，发现还是失败</p>
+<blockquote>
+<p>Access to XMLHttpRequest at ‘<a href="http://10.101.156.50:3001/post&#39;" target="_blank" rel="noopener">http://10.101.156.50:3001/post&#39;</a> from origin ‘<a href="http://localhost:8081&#39;">http://localhost:8081&#39;</a> has been blocked by CORS policy: Request header field content-type is not allowed by Access-Control-Allow-Headers in preflight response.</p>
+</blockquote>
+<p>而此时失败的报错，和首次的报错信息缺不同，首次是Access-Control-Allow-Origin header被拒绝，而这次说的是请求头部的content-type不被允许，说明我们的Access-Control-Allow-Origin设置成功了</p>
+<p>继续看之前的规范，请求头部对于Content-Type值的规范设置，而我们通过axios默认发送的content-type: application/json，因此，我们还需要在服务端对于content-type进行设置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="keyword">async</span> (ctx, next)=&gt; &#123;</span><br><span class="line">    ctx.set(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'http://localhost:8081'</span>);</span><br><span class="line">    ctx.set(<span class="string">'Access-Control-Allow-Headers'</span>, <span class="string">'Content-Type'</span>);</span><br><span class="line">  	next()</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>重启服务，再次访问，</p>
+<p><img src="https://i.loli.net/2020/06/23/Fva19KhfU7oiJG3.png" alt="image.png"></p>
+<p><img src="https://i.loli.net/2020/06/23/YRW1INq6Vz9FDc4.png" alt=""></p>
+<p>可以看到，首先发送了一个request method为options的预检请求，预检请求的origin/content-type通过，请求成功，再发送我们的正式请求</p>
+<p>然而，我们服务端的代码还是有不小的问题的，例如，发送预检请求后，仍然需要继续访问相应的路径，返回结果后再返回给客户端，这就造成了不必要的资源消耗，我们可以这样优化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next)=&gt; &#123;</span><br><span class="line">    ctx.set(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'*'</span>);</span><br><span class="line">    ctx.set(<span class="string">'Access-Control-Allow-Headers'</span>, <span class="string">'Content-Type'</span>);</span><br><span class="line">  	<span class="comment">// 若为预检请求，通过则直接返回200</span></span><br><span class="line">    <span class="keyword">if</span> (ctx.method == <span class="string">'OPTIONS'</span>) &#123;</span><br><span class="line">      ctx.body = <span class="number">200</span>; </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      next();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>CORS的存在还是由于浏览器的同源策略，是为了解决跨域请求而产生的，该方法需要在服务端进行相应的设置，包括请求origin，请求method以及请求headers等设置</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%B7%A8%E5%9F%9F/" rel="tag"># 跨域</a>
+          
+            <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag"># 浏览器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/19/%E6%88%91%E6%89%80%E7%90%86%E8%A7%A3%E7%9A%84%E5%8D%95%E9%A1%B5%E9%9D%A2%E8%B7%AF%E7%94%B1-vue-router/" rel="next" title="我所理解的单页面路由 - vue-router">
+                <i class="fa fa-chevron-left"></i> 我所理解的单页面路由 - vue-router
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="朱杰" />
+            
+              <p class="site-author-name" itemprop="name">朱杰</p>
+              <p class="site-description motion-element" itemprop="description">step by step</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/upzhujie" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#同源策略"><span class="nav-number">1.</span> <span class="nav-text">同源策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是同源"><span class="nav-number">1.1.</span> <span class="nav-text">什么是同源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么能保证浏览器安全"><span class="nav-number">1.2.</span> <span class="nav-text">为什么能保证浏览器安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非同源有什么影响"><span class="nav-number">1.3.</span> <span class="nav-text">非同源有什么影响</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于CORS"><span class="nav-number">2.</span> <span class="nav-text">关于CORS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cors的请求"><span class="nav-number">2.1.</span> <span class="nav-text">cors的请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单请求"><span class="nav-number">2.2.</span> <span class="nav-text">简单请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非简单请求"><span class="nav-number">2.3.</span> <span class="nav-text">非简单请求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">朱杰</span>
+
+  
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
