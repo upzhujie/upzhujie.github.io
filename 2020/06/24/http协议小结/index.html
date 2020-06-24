@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="TCP,计算机网络," />
+  <meta name="keywords" content="计算机网络,http," />
 
 
 
@@ -79,26 +79,20 @@
 
 
 
-<meta name="description" content="TCP协议的特点 TCP是面向连接的传输层协议 每条TCP连接只能有两个端点，每个端点叫做套接字socket(IP:端口) 提供可靠支付的服务 全双工通信 面向字节流  TCP报文段的首部  序号ack： 本报文段索要发送数据的第一个字节的序号 确认号seq： 期望收到对方下一个报文段的第一个数据字节的序号 ACK: 确认号有效标示，只有ACK为1时，确认号才有效 SYN: 同步标示，建立连接后都">
+<meta name="description" content="http协议 - 超文本传输协议， 是基于TCP&#x2F;IP的应用层协议，它不涉及数据包传输，主要规定了客户端和服务器之间的通信格式  基本性质： 简单：设计简单，报文容易阅读   可拓展： 客户端和服务端可以拓展http headers，拓展功能  无状态，有会话的： 两个http请求是不相关的，但是可以通过cookie来建立有状态的会话（本质无状态）   http是基于TCP协议的，因为TCP协">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TCP协议">
-<meta property="og:url" content="http://yoursite.com/2019/12/10/TCP%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:title" content="http协议">
+<meta property="og:url" content="http://yoursite.com/2020/06/24/http%E5%8D%8F%E8%AE%AE%E5%B0%8F%E7%BB%93/index.html">
 <meta property="og:site_name" content="萤火虫去哪了">
-<meta property="og:description" content="TCP协议的特点 TCP是面向连接的传输层协议 每条TCP连接只能有两个端点，每个端点叫做套接字socket(IP:端口) 提供可靠支付的服务 全双工通信 面向字节流  TCP报文段的首部  序号ack： 本报文段索要发送数据的第一个字节的序号 确认号seq： 期望收到对方下一个报文段的第一个数据字节的序号 ACK: 确认号有效标示，只有ACK为1时，确认号才有效 SYN: 同步标示，建立连接后都">
-<meta property="og:image" content="https://i.loli.net/2019/12/10/hcNvbmIMFYyi9uE.jpg">
-<meta property="og:image" content="https://i.loli.net/2019/12/10/3T9mBG6rLbkAWKV.jpg">
-<meta property="og:image" content="https://i.loli.net/2019/12/10/qxAPHEBczsDifan.jpg">
-<meta property="og:image" content="https://i.loli.net/2019/12/10/dHw3m9uRhz7AKSG.png">
-<meta property="og:image" content="https://i.loli.net/2019/12/10/DIafMOPkErCzSbn.png">
-<meta property="og:image" content="https://i.loli.net/2019/12/10/lGyaXKVdJwcoqLU.png">
-<meta property="og:image" content="https://i.loli.net/2019/12/10/2xOIW1tdwyeHJvk.png">
-<meta property="article:published_time" content="2019-12-10T12:58:12.000Z">
-<meta property="article:modified_time" content="2019-12-10T13:01:06.000Z">
+<meta property="og:description" content="http协议 - 超文本传输协议， 是基于TCP&#x2F;IP的应用层协议，它不涉及数据包传输，主要规定了客户端和服务器之间的通信格式  基本性质： 简单：设计简单，报文容易阅读   可拓展： 客户端和服务端可以拓展http headers，拓展功能  无状态，有会话的： 两个http请求是不相关的，但是可以通过cookie来建立有状态的会话（本质无状态）   http是基于TCP协议的，因为TCP协">
+<meta property="og:image" content="https://i.loli.net/2020/06/24/LeAhDXQkFYNC1o2.png">
+<meta property="article:published_time" content="2020-06-24T15:15:51.000Z">
+<meta property="article:modified_time" content="2020-06-24T15:16:52.110Z">
 <meta property="article:author" content="朱杰">
-<meta property="article:tag" content="TCP">
 <meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="http">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2019/12/10/hcNvbmIMFYyi9uE.jpg">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/24/LeAhDXQkFYNC1o2.png">
 
 
 
@@ -128,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/12/10/TCP协议/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/06/24/http协议小结/"/>
 
 
 
 
 
-  <title>TCP协议 | 萤火虫去哪了</title>
+  <title>http协议 | 萤火虫去哪了</title>
   
 
 
@@ -271,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/TCP%E5%8D%8F%E8%AE%AE/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/http%E5%8D%8F%E8%AE%AE%E5%B0%8F%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="朱杰">
@@ -288,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">TCP协议</h1>
+          <h1 class="post-title" itemprop="name headline">http协议</h1>
         
 
         <div class="post-meta">
@@ -300,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T20:58:12+08:00">
-                2019-12-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-24T23:15:51+08:00">
+                2020-06-24
               </time>
             
 
@@ -360,80 +354,46 @@
       
 
       
-        <h3 id="TCP协议的特点"><a href="#TCP协议的特点" class="headerlink" title="TCP协议的特点"></a>TCP协议的特点</h3><ul>
-<li>TCP是<strong>面向连接</strong>的传输层协议</li>
-<li>每条TCP连接只能有两个端点，每个端点叫做<strong>套接字socket(IP:端口)</strong></li>
-<li>提供<strong>可靠支付</strong>的服务</li>
-<li>全双工通信</li>
-<li>面向字节流</li>
-</ul>
-<h3 id="TCP报文段的首部"><a href="#TCP报文段的首部" class="headerlink" title="TCP报文段的首部"></a>TCP报文段的首部</h3><p><img src="https://i.loli.net/2019/12/10/hcNvbmIMFYyi9uE.jpg" alt="tcp.png"></p>
-<ul>
-<li>序号ack： 本报文段索要发送数据的第一个字节的序号</li>
-<li>确认号seq： 期望收到对方下一个报文段的第一个数据字节的序号</li>
-<li>ACK: 确认号有效标示，只有ACK为1时，确认号才有效</li>
-<li>SYN: 同步标示，建立连接后都为1，当SYN=1&amp;ACK=0时表示这是个建立请求报文</li>
-<li>FIN: 释放标示</li>
-<li>窗口：发送本报文段一方的接受窗口</li>
-</ul>
-<h3 id="TCP建立连接"><a href="#TCP建立连接" class="headerlink" title="TCP建立连接"></a>TCP建立连接</h3><p><img src="https://i.loli.net/2019/12/10/3T9mBG6rLbkAWKV.jpg" alt="tcp_connect.jpg"></p>
-<ul>
-<li>客户端A将其SYN设为1，并且其余flags皆为0，并选择一个初始序号seq = x。SYN为1的报文段不能携带数据，但要消耗一个序号，发送后，此时客户端A进入SYN-SENT（同步已发送）状态</li>
-<li>服务器B端接受请求报文段后，若同意建立连接，则设ACK=1,SYN=1,选择一个初始序号seq=y，ack确认号=x+1，发送给客户端A，此时服务端B进入SYN-RCVD（同步已接受）状态</li>
-<li>当客户端A收到来自服务端B的确认报文段后，设置TCP报文段，ACK=1,seq=x+1,ack=y+1,此时SYN=0，当ACK=1时，若不传输数据，则不消耗序号。发送该报文后，客户端A进入ESTAB-LISHED（已建立链接）状态</li>
-<li>当服务端B收到A的ACK报文（<em>ACK=1的报文</em>）时，此时服务端B也进入ESTAB-LISHED（已建立链接状态），此时链接完整建立，可传输数据</li>
-</ul>
-<blockquote>
-<p> <strong>question:为什么TCP建立连接需要三次握手？</strong></p>
-<p>answer: 因为三次握手刚好能够正常表示客户端和服务端都能接受并且发送数据，如果未两次握手，则服务端不能保证其发送的报文能够被客户端接手，因为其没有接手来自客户端的ACK报文，而如果是四次握手时，就是多余操作浪费网络资源</p>
+        <blockquote>
+<p> http协议 - 超文本传输协议， 是基于TCP/IP的应用层协议，它不涉及数据包传输，主要规定了客户端和服务器之间的通信格式</p>
 </blockquote>
-<h3 id="TCP释放链接"><a href="#TCP释放链接" class="headerlink" title="TCP释放链接"></a>TCP释放链接</h3><p><img src="https://i.loli.net/2019/12/10/qxAPHEBczsDifan.jpg" alt="tcp_release.jpg"></p>
-<ul>
-<li>当客户端A数据发送完后，需要释放连接，发出一个连接释放报文，置FIN=1,seq=u，并且进入FIN-WAIT-1（终止等待1）状态</li>
-<li>当服务端B收到来自客户端A的释放连接报文时，发出确认报文，设置ACK=1,FIN=0,ack=u+1,seq=v（服务端B发出最后一个数据的字节序号+1），发出后，此时服务端B进入CLOSE-WAIT（关闭等待）状态</li>
-<li>当客户端A收到来自服务端B的确认报文时，此时客户端A进入FIN-WAIT-2（终止等待2）状态，等待B发出的释放连接报文，此时，服务端B可能还有数据在发送</li>
-<li>当服务端B的数据发送完后，需要释放连接，建立一个链接释放报文，FIN=1，确认号ack仍为u+1，但是其序列号seq=w（之前发送过一些数据，导致和之前的seq=v不同），发送后，此时B进入LAST-ACK（最后确认）状态</li>
-<li>当客户端A接受到来自B的释放报文段后，发出确认，ACK=1,seq=u+1,ack=w+1，发出后，此时A进入TIME-WAIT（时间等待）状态，此时建立还没有完全释放，A释放需要经历一个时间等待（系统设置）后才能真正进入CLOSED（连接关闭）状态</li>
-<li>当服务端B接手到来自A的ACK报文段后，B进入了CLOSED（连接关闭）状态</li>
-</ul>
-<h3 id="TCP可靠传输"><a href="#TCP可靠传输" class="headerlink" title="TCP可靠传输"></a>TCP可靠传输</h3><p>以字节为单位的滑动窗口</p>
-<p><img src="https://i.loli.net/2019/12/10/dHw3m9uRhz7AKSG.png" alt="bytestream.png"></p>
-<p>用一个例子来简单的说明： </p>
-<ul>
-<li>A的发送窗口为31 - 50， 在0-30的数据已经被服务端B接受，在发送窗口内，31-41序号的数据已发送，但并未被B接受，42-50的数据并没有被发送</li>
-<li>当服务端的窗口B，其序号也和A的发送窗口类似，如果正常接受，例如此时接受到了来自A的报文，seq=33，假设传输的字节为1个字节，则并且B收到了连续的报文序号持续到33，那么B发送给A的TCP报文则为ack=33+1=34</li>
-<li>当A收到该报文时，31-33的报文都已全部被服务器B接受，此时窗口往前移动到34，即P1=34,P3=54</li>
-<li>当第二步中，B收到了32,33序号的报文，但并没有收到序号为31的报文时，此时连续序号最大为30，那么此时B往A的报文中，ack仍然为31，并将32,33缓存在窗口中，当A再次发送序号为31的报文后，B的确认序号ack才为34（33+1希望从A收到的序号）</li>
-</ul>
-<h3 id="流量控制与拥塞控制"><a href="#流量控制与拥塞控制" class="headerlink" title="流量控制与拥塞控制"></a>流量控制与拥塞控制</h3><h4 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h4><blockquote>
-<p>流量控制就是让发送方的发送熟虑不要太快，要让接收方来得及接受</p>
-</blockquote>
-<p>通过滑动窗口，我们可以很方便的实现在TCP连接上的流量控制（<em>简单粗暴的理解，当窗口越大时，一定时间内可发送的报文越多</em>）</p>
-<p>发送方的发送窗口不能超过接收方约定的窗口大小，并且窗口单位是字节，并不是报文段，例如下图的一个例子，每个报文能传输100个字节</p>
-<p><img src="https://i.loli.net/2019/12/10/DIafMOPkErCzSbn.png" alt="streamcontrol.png"></p>
-<p>接收方通过三次控制发送方的窗口大小，来进行流量控制</p>
-<h4 id="拥塞处理"><a href="#拥塞处理" class="headerlink" title="拥塞处理"></a>拥塞处理</h4><blockquote>
-<p>拥塞控制与流量控制的关系密切，所谓拥塞控制就是防止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载</p>
-</blockquote>
-<p>几种拥塞处理办法</p>
-<ul>
-<li><p>慢开始： 由小到大逐渐增大发送窗口，直到达到一个合理的窗口大小</p>
+<h3 id="基本性质："><a href="#基本性质：" class="headerlink" title="基本性质："></a>基本性质：</h3><ul>
+<li><p>简单：设计简单，报文容易阅读 </p>
 </li>
-<li><p>拥塞避免： 由小到大缓慢增大发送窗口</p>
+<li><p>可拓展： 客户端和服务端可以拓展http headers，拓展功能</p>
+</li>
+<li><p>无状态，有会话的： 两个http请求是不相关的，但是可以通过cookie来建立有状态的会话（本质无状态）</p>
 </li>
 </ul>
-<p><img src="https://i.loli.net/2019/12/10/lGyaXKVdJwcoqLU.png" alt="cwnd.png"></p>
-<blockquote>
-<p>网络堵塞时cwnd恢复1</p>
-</blockquote>
-<ul>
-<li>快重传</li>
-<li>快恢复</li>
+<p>http是基于TCP协议的，因为TCP协议是可靠的，可以通过他的超时重传以及报文校验等等来保证数据的可靠</p>
+<h3 id="关于http请求格式"><a href="#关于http请求格式" class="headerlink" title="关于http请求格式"></a>关于http请求格式</h3><p><img src="https://i.loli.net/2020/06/24/LeAhDXQkFYNC1o2.png" alt="下载.png"></p>
+<p>例如一个真实的请求</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET www.baidu.com HTTP/<span class="number">1.1</span></span><br><span class="line">Host    www.baidu.com</span><br><span class="line">User-Agent  Mozilla/<span class="number">5.0</span> (Windows NT <span class="number">10.0</span>; WOW64) AppleWebKit/<span class="number">537.36</span> (KHTML, like Gecko) Chrome/<span class="number">51.0</span><span class="number">.2704</span><span class="number">.106</span> Safari/<span class="number">537.36</span></span><br><span class="line">Accept:text/html,application/xhtml+xml...</span><br><span class="line">Accept-Encoding gzip, deflate, sdch</span><br><span class="line">Accept-Language zh-CN,zh;q=<span class="number">0.8</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="通过http能做什么"><a href="#通过http能做什么" class="headerlink" title="通过http能做什么"></a>通过http能做什么</h3><ul>
+<li>通过Cache-Control控制缓存</li>
+<li>开放同源策略，Access-Control-Allow-Origin，使得跨域请求</li>
+<li>通过cookie建立一个带有状态的会话</li>
 </ul>
-<p><img src="https://i.loli.net/2019/12/10/2xOIW1tdwyeHJvk.png" alt="cwnd_fase.png"></p>
+<h3 id="关于http-1-0"><a href="#关于http-1-0" class="headerlink" title="关于http/1.0"></a>关于http/1.0</h3><p>在http1.0中，默认会为每一对单独的http请求都打开一个单独的TCP链接，例如在一个客户端中，同时请求了一个域名下的不同资源，他会为每一次请求都建立一个单独的TCP链接，因此这种方式是比较低效的</p>
+<p>Q： 那么如果针对统一域名下的请求，都共享一个TCP链接，是否会提升效率呢？ -  会</p>
+<h3 id="关于http-1-1"><a href="#关于http-1-1" class="headerlink" title="关于http/1.1"></a>关于http/1.1</h3><p>在http1.1中，引入了持久链接，即TCP链接默认不关闭，可以被多个请求复用，即Connection: keep-alive(默认)，在我们建立第一次TCP链接后，TCP链接在第一次请求完成后并不会马上销毁，若有第二个对于同一域名的请求，则会复用该链接，否则，进入休眠状态，若在一定时间内发现客户端和服务端并没有请求了，则可以主动地关闭链接。</p>
+<p>浏览器对于同一域名的请求，可以并发建立多个TCP链接，但一般数量会控制在4-8个之间</p>
 <blockquote>
-<p>网络堵塞时cwnd减半</p>
+<p>如果浏览器不对并发请求数量进行限制，会给服务器造成很大的压力，一时间会有大量请求同时发往服务端，造成堵塞</p>
+<p>对于页面的优化方向： 减少资源请求</p>
 </blockquote>
+<h3 id="关于http-2"><a href="#关于http-2" class="headerlink" title="关于http/2"></a>关于http/2</h3><ul>
+<li><p>帧： HTTP/2 数据通信的最小单位消息</p>
+</li>
+<li><p>流：由帧组成数据流</p>
+</li>
+</ul>
+<h4 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h4><p>一个TCP链接中可以存在多个流，换句话说也就是可以发送多个请求，可以把每个请求当作一个流</p>
+<p><strong>同域名下所有通信都在单个连接上完成，该连接可以承载任意数量的双向数据流。</strong>每个数据流都以消息的形式发送，而消息又由一个或多个帧组成。多个帧之间可以乱序发送，根据帧首部的流标识可以重新组装。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>HTTP 报文是使用 HTTP 的关键；它们的结构简单，并且具有高可扩展性。HTTP/2 帧机制是在 HTTP/1.x 语法和底层传输协议之间增加了一个新的中间层（大概是从数据到帧和流的转化层），而没有从根本上修改它，即它是建立在经过验证的机制之上</p>
 
       
     </div>
@@ -451,9 +411,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/TCP/" rel="tag"># TCP</a>
-          
             <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          
+            <a href="/tags/http/" rel="tag"># http</a>
           
         </div>
       
@@ -466,8 +426,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/08/hexo%E7%BC%96%E8%BE%91%E4%B8%8A%E4%BC%A0/" rel="next" title="hexo编辑上传">
-                <i class="fa fa-chevron-left"></i> hexo编辑上传
+              <a href="/2020/06/23/CORS%E8%B7%A8%E5%9F%9F/" rel="next" title="CORS跨域">
+                <i class="fa fa-chevron-left"></i> CORS跨域
               </a>
             
           </div>
@@ -475,10 +435,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/21/node-fs%E4%B8%8Ebuffer%E5%88%9D%E6%8E%A2/" rel="prev" title="node - fs与buffer初探">
-                node - fs与buffer初探 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -624,7 +580,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP协议的特点"><span class="nav-number">1.</span> <span class="nav-text">TCP协议的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP报文段的首部"><span class="nav-number">2.</span> <span class="nav-text">TCP报文段的首部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP建立连接"><span class="nav-number">3.</span> <span class="nav-text">TCP建立连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP释放链接"><span class="nav-number">4.</span> <span class="nav-text">TCP释放链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP可靠传输"><span class="nav-number">5.</span> <span class="nav-text">TCP可靠传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流量控制与拥塞控制"><span class="nav-number">6.</span> <span class="nav-text">流量控制与拥塞控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#流量控制"><span class="nav-number">6.1.</span> <span class="nav-text">流量控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拥塞处理"><span class="nav-number">6.2.</span> <span class="nav-text">拥塞处理</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本性质："><span class="nav-number">1.</span> <span class="nav-text">基本性质：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于http请求格式"><span class="nav-number">2.</span> <span class="nav-text">关于http请求格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过http能做什么"><span class="nav-number">3.</span> <span class="nav-text">通过http能做什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于http-1-0"><span class="nav-number">4.</span> <span class="nav-text">关于http&#x2F;1.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于http-1-1"><span class="nav-number">5.</span> <span class="nav-text">关于http&#x2F;1.1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于http-2"><span class="nav-number">6.</span> <span class="nav-text">关于http&#x2F;2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多路复用"><span class="nav-number">6.1.</span> <span class="nav-text">多路复用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">7.</span> <span class="nav-text">结论</span></a></li></ol></div>
             
 
           </div>
