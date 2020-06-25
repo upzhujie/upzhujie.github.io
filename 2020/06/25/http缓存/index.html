@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="node.js,buffer,fs文件系统," />
+  <meta name="keywords" content="浏览器,http,缓存," />
 
 
 
@@ -79,19 +79,22 @@
 
 
 
-<meta name="description" content="Buffer - 缓冲器 基本概念   Buffer类是作为Node.js API的一部分引入的，用于在TCP流、文件系统操作、以及其他上下文中与八位字节流进行交互 Buffer实例是对应于V8堆外部的固定大小的原始内存分配，在创建时确定大小，无法更改   应用场景  流： 作为IO的中转 处理大对象：node进程内存有限，而buffer占用的空间不再node进程空间，    实例的创建  Buf">
+<meta name="description" content="概览浏览器的缓存机制，也就相当于我们说的http缓存机制，该机制根据http的相应头来制定，浏览器缓存是对之前请求过的资源进行缓存，以便后续重复加载时使用，减少了请求，提高速度，降低了服务器的压力 http缓存机制主要在http响应头中设定，响应头重相关的字段有  Expires（过期时间）  Cache-Control  Last-Modified（上一次更改的时间）  Etag（版本号）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node - fs与buffer初探">
-<meta property="og:url" content="http://yoursite.com/2019/12/21/node-fs%E4%B8%8Ebuffer%E5%88%9D%E6%8E%A2/index.html">
+<meta property="og:title" content="http缓存">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/http%E7%BC%93%E5%AD%98/index.html">
 <meta property="og:site_name" content="萤火虫去哪了">
-<meta property="og:description" content="Buffer - 缓冲器 基本概念   Buffer类是作为Node.js API的一部分引入的，用于在TCP流、文件系统操作、以及其他上下文中与八位字节流进行交互 Buffer实例是对应于V8堆外部的固定大小的原始内存分配，在创建时确定大小，无法更改   应用场景  流： 作为IO的中转 处理大对象：node进程内存有限，而buffer占用的空间不再node进程空间，    实例的创建  Buf">
-<meta property="article:published_time" content="2019-12-21T14:34:52.000Z">
-<meta property="article:modified_time" content="2019-12-21T14:42:48.000Z">
+<meta property="og:description" content="概览浏览器的缓存机制，也就相当于我们说的http缓存机制，该机制根据http的相应头来制定，浏览器缓存是对之前请求过的资源进行缓存，以便后续重复加载时使用，减少了请求，提高速度，降低了服务器的压力 http缓存机制主要在http响应头中设定，响应头重相关的字段有  Expires（过期时间）  Cache-Control  Last-Modified（上一次更改的时间）  Etag（版本号）">
+<meta property="og:image" content="https://i.loli.net/2020/06/25/vP9YSznUdjoAgDk.png">
+<meta property="og:image" content="https://i.loli.net/2020/06/25/m5A1tukGNb2wO9a.png">
+<meta property="article:published_time" content="2020-06-25T06:30:11.000Z">
+<meta property="article:modified_time" content="2020-06-25T06:32:09.931Z">
 <meta property="article:author" content="朱杰">
-<meta property="article:tag" content="node.js">
-<meta property="article:tag" content="buffer">
-<meta property="article:tag" content="fs文件系统">
+<meta property="article:tag" content="浏览器">
+<meta property="article:tag" content="http">
+<meta property="article:tag" content="缓存">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/25/vP9YSznUdjoAgDk.png">
 
 
 
@@ -121,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/12/21/node-fs与buffer初探/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/06/25/http缓存/"/>
 
 
 
 
 
-  <title>node - fs与buffer初探 | 萤火虫去哪了</title>
+  <title>http缓存 | 萤火虫去哪了</title>
   
 
 
@@ -264,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/21/node-fs%E4%B8%8Ebuffer%E5%88%9D%E6%8E%A2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/25/http%E7%BC%93%E5%AD%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="朱杰">
@@ -281,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">node - fs与buffer初探</h1>
+          <h1 class="post-title" itemprop="name headline">http缓存</h1>
         
 
         <div class="post-meta">
@@ -293,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-21T22:34:52+08:00">
-                2019-12-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-25T14:30:11+08:00">
+                2020-06-25
               </time>
             
 
@@ -316,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/node-js/" itemprop="url" rel="index">
-                    <span itemprop="name">node.js</span>
+                  <a href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">浏览器</span>
                   </a>
                 </span>
 
@@ -353,123 +356,49 @@
       
 
       
-        <h4 id="Buffer-缓冲器"><a href="#Buffer-缓冲器" class="headerlink" title="Buffer - 缓冲器"></a>Buffer - 缓冲器</h4><ul>
-<li>基本概念</li>
+        <h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><p>浏览器的缓存机制，也就相当于我们说的http缓存机制，该机制根据http的相应头来制定，浏览器缓存是对之前请求过的资源进行缓存，以便后续<strong>重复加载时使用，减少了请求，提高速度，降低了服务器的压力</strong></p>
+<p>http缓存机制主要在http响应头中设定，响应头重相关的字段有</p>
+<ul>
+<li><p>Expires（过期时间）</p>
+</li>
+<li><p>Cache-Control</p>
+</li>
+<li><p>Last-Modified（上一次更改的时间）</p>
+</li>
+<li><p>Etag（版本号）</p>
+</li>
 </ul>
+<p>例如一个资源请求相应头</p>
+<p><img src="https://i.loli.net/2020/06/25/vP9YSznUdjoAgDk.png" alt="image-20200625133310552.png"></p>
+<p>例如一个请求响应头，如果cache-control不为no-store时，即表示该资源是可以缓存的 —- <strong>大部分web服务器都默认开启协商缓存</strong>，会对该资源的缓存时间作出以下三个计算</p>
+<ul>
+<li><p>若有max-age=N，则缓存时间则为对应的N秒</p>
 <blockquote>
-<p>Buffer类是作为Node.js API的一部分引入的，用于在TCP流、文件系统操作、以及其他上下文中与八位字节流进行交互</p>
-<p>Buffer实例是对应于V8堆外部的固定大小的原始内存分配，在创建时确定大小，无法更改</p>
+<p>Max-age = 0 相当于该资源已过期</p>
 </blockquote>
-<ul>
-<li><p>应用场景</p>
-<ul>
-<li>流： 作为IO的中转</li>
-<li>处理大对象：node进程内存有限，而buffer占用的空间不再node进程空间， </li>
-</ul>
 </li>
-<li><p>实例的创建</p>
-<ul>
-<li>Buffer.from</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> buffer = Buffer.from([<span class="number">255</span>,<span class="number">255</span>,<span class="number">3</span>])</span><br><span class="line"><span class="comment">// &lt;Buffer ff ff 03&gt;</span></span><br><span class="line"></span><br><span class="line">Buffer.from(<span class="string">'abfsAZ'</span>)</span><br><span class="line"><span class="comment">// &lt;Buffer 61 62 66 73 41 5a&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Buffer.alloc(size,[fill[,encoding]]) </li>
-</ul>
-<p>创建一个指定大小的并且已经<strong>初始化</strong>的buffer实例，不会包含旧数据（因为已有数据填充）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Buffer.alloc(<span class="number">10</span>,<span class="number">1</span>)</span><br><span class="line"><span class="comment">// &lt;Buffer 01*10&gt;</span></span><br><span class="line">Buffer.alloc(<span class="number">2</span>**<span class="number">15</span>)</span><br><span class="line"><span class="comment">// .283ms</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Buffer.allocUnsafe(size)</li>
-</ul>
-<p>创建一个指定大小但<strong>未初始化</strong>的buffer实例，创建速度快，可能会包含一些旧数据(不安全)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Buffer.allocUnsave(<span class="number">2</span>**<span class="number">15</span>);</span><br><span class="line"><span class="comment">// .229ms</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用实例 buffer</p>
-<ul>
-<li>buffer.toString() 转成字符串</li>
-<li>buffer.clear(0) 清空buffer</li>
-<li>buffer.includes() 查询值是否存在</li>
-</ul>
-</li>
-</ul>
-<h4 id="fs-文件系统"><a href="#fs-文件系统" class="headerlink" title="fs - 文件系统"></a>fs - 文件系统</h4><p>node脚本与文件间的交互，包括读取，创建，修改，删除等等</p>
-<ul>
-<li><p>常用的简易api</p>
-<ul>
-<li><p>fs.readFile（一次性读取）</p>
-</li>
-<li><p>fs.writeFile (一次性写入)</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>针对一些小文件，可直接使用fs.readFile等api（异步读取）</p>
-<p>也存在一些同步读取文件的api，例如fs.readFileSync/fs.writeFileSync等</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">fs.readFile(<span class="string">'./1.txt'</span>, (err,data) =&gt; &#123;&#125;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>相较简易api，更为基础的一些api，当上述的api遇到文件较大时，无法一次性操作，可以通过手动操作多次读取。</p>
-<ul>
-<li>fs.open(path, flag, mode=0o666, callback(err,fd))</li>
-<li>fs.read(fd, buffer, offset, length, position, callback(err, bytesRead, buf))</li>
-<li>fs.write(fs, buffer, offset, length, position, callback)</li>
-<li>fs.close(fd,callback)</li>
-</ul>
-</li>
-</ul>
-<p>  <strong>flag - 常见标识位</strong></p>
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>r</td>
-<td>读取文件</td>
-</tr>
-<tr>
-<td>r+</td>
-<td>读取并写入文件</td>
-</tr>
-<tr>
-<td>w</td>
-<td>写入文件</td>
-</tr>
-<tr>
-<td>w+</td>
-<td>读取并写入，若不存在，则创建文件</td>
-</tr>
-<tr>
-<td>a</td>
-<td>追加写入</td>
-</tr>
-</tbody></table>
-<p>  <strong>mode - 权限位</strong></p>
-<p>  主要针对unix和linux系统，windows默认权限可读可写，所以默认为0o666(默认可读写)</p>
+<li><p>若有Expires，则该资源有效缓存时间为expires与响应头的Date之间的差（优先级低于max-age）</p>
 <blockquote>
-<p>By default, mode is set to ‘0o666’ which allowed both read and write functionality for the newly created file.</p>
+<p>Expires:</p>
+<p>响应头包含日期/时间， 即在此时候之后，响应过期。</p>
+<p>无效的日期，比如 0, 代表着过去的日期，即该资源已经过期</p>
 </blockquote>
-<p>  <strong>fd - 文件描述符</strong></p>
-<blockquote>
-<p>操作系统会为每个打开的文件分配一个名为文件描述符的数值标识，文件操作使用这些文件描述符来识别与追踪每个特定的文件</p>
-</blockquote>
-<p>  <strong>offset - 向buffer中写入的初始位置</strong></p>
-<p>  <strong>length - 读取文件的长度</strong></p>
-<p>  <strong>position - 操作文件的初始位置</strong></p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">var</span> buf = Buffer.alloc(<span class="number">16</span>)</span><br><span class="line">fs.open(<span class="string">'./main.js'</span>,<span class="string">'r'</span>,(err,fd) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(fd) <span class="comment">// 3</span></span><br><span class="line">    fs.read(fd,buf, <span class="number">0</span>, <span class="number">8</span>, <span class="number">0</span>, (err, bytesRead, _buf) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(bytesRead) <span class="comment">// 8 - 已读字节数</span></span><br><span class="line">        <span class="built_in">console</span>.log(_buf) <span class="comment">// &lt;Buffer 69 6d 70 6f 72 74 20 56 00 00 00 00 00 00 00 00&gt;</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>其他关于文件夹的一些api(异步)</p>
-<ul>
-<li>fs.readdir - 读取文件夹</li>
-<li>fs.mkdir - 创建文件夹</li>
-<li>fs.rmdir - 删除文件夹</li>
-</ul>
+</li>
+<li><p>若以上两者都没有，看是否有last-modified，若有，则缓存时间为Date-(last-modified) / 10，如以上实例就是用这种计算方式</p>
 </li>
 </ul>
+<h3 id="关于Cache-Control"><a href="#关于Cache-Control" class="headerlink" title="关于Cache-Control"></a>关于Cache-Control</h3><ul>
+<li>max-age: 资源可以缓存的时间</li>
+<li>s-maxage: 同max-age，针对代理服务器缓存而言</li>
+<li>public: 表示缓存可以被任何人缓存（CDN/缓存服务器等等）</li>
+<li>private：只能被个人用户缓存</li>
+<li>no-cache：每一次请求资源必须发送请求，服务端判断是否资源已更新，若已更新，则返回资源200， 若资源未更新，则返回304继续使用缓存资源</li>
+<li>no-store: 禁止缓存</li>
+</ul>
+<h3 id="关于强缓存和协商缓存"><a href="#关于强缓存和协商缓存" class="headerlink" title="关于强缓存和协商缓存"></a>关于强缓存和协商缓存</h3><h4 id="强缓存："><a href="#强缓存：" class="headerlink" title="强缓存："></a>强缓存：</h4><p>设置了expires或者max-age，且缓存时间仍在有效期内，则会判断资源为强缓存，从缓存中读取返回</p>
+<h4 id="协商缓存："><a href="#协商缓存：" class="headerlink" title="协商缓存："></a>协商缓存：</h4><p>若没有命中强缓存，例如缓存时间已失效，则将该资源的last-modified，以及tag通过请求响应头字段if-Modified-Since, if-None-Match两个字段发送给服务端，服务端判断该资源是否仍然有效，如果仍然是最新资源，则返回304不返回资源，客户端重新缓存时间。否则，若该资源已更新，则直接从服务器加载该资源，返回200</p>
+<p>协商缓存需要配合强缓存使用，如果不启用强缓存的话，协商缓存根本没有意义</p>
+<h3 id="大致的流程"><a href="#大致的流程" class="headerlink" title="大致的流程"></a>大致的流程</h3><p><img src="https://i.loli.net/2020/06/25/m5A1tukGNb2wO9a.png" alt="38223505-d8ab53da-371d-11e8-9263-79814b6971a5.png"></p>
 
       
     </div>
@@ -487,11 +416,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/node-js/" rel="tag"># node.js</a>
+            <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag"># 浏览器</a>
           
-            <a href="/tags/buffer/" rel="tag"># buffer</a>
+            <a href="/tags/http/" rel="tag"># http</a>
           
-            <a href="/tags/fs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="tag"># fs文件系统</a>
+            <a href="/tags/%E7%BC%93%E5%AD%98/" rel="tag"># 缓存</a>
           
         </div>
       
@@ -504,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/10/TCP%E5%8D%8F%E8%AE%AE/" rel="next" title="TCP协议">
-                <i class="fa fa-chevron-left"></i> TCP协议
+              <a href="/2020/06/24/http%E5%8D%8F%E8%AE%AE%E5%B0%8F%E7%BB%93/" rel="next" title="http协议">
+                <i class="fa fa-chevron-left"></i> http协议
               </a>
             
           </div>
@@ -513,10 +442,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/28/Vue%E6%BA%90%E7%A0%81-%E6%89%93%E5%8C%85%E6%9E%84%E5%BB%BA/" rel="prev" title="Vue源码-打包构建">
-                Vue源码-打包构建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -662,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Buffer-缓冲器"><span class="nav-number">1.</span> <span class="nav-text">Buffer - 缓冲器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fs-文件系统"><span class="nav-number">2.</span> <span class="nav-text">fs - 文件系统</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概览"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于Cache-Control"><span class="nav-number">2.</span> <span class="nav-text">关于Cache-Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于强缓存和协商缓存"><span class="nav-number">3.</span> <span class="nav-text">关于强缓存和协商缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#强缓存："><span class="nav-number">3.1.</span> <span class="nav-text">强缓存：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协商缓存："><span class="nav-number">3.2.</span> <span class="nav-text">协商缓存：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大致的流程"><span class="nav-number">4.</span> <span class="nav-text">大致的流程</span></a></li></ol></div>
             
 
           </div>
