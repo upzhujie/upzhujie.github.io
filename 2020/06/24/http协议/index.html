@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="计算机网络,http," />
+  <meta name="keywords" content="计算机网络,http,https," />
 
 
 
@@ -79,18 +79,19 @@
 
 
 
-<meta name="description" content="http协议 - 超文本传输协议， 是基于TCP&#x2F;IP的应用层协议，它不涉及数据包传输，主要规定了客户端和服务器之间的通信格式  基本性质： 简单：设计简单，报文容易阅读   可拓展： 客户端和服务端可以拓展http headers，拓展功能  无状态，有会话的： 两个http请求是不相关的，但是可以通过cookie来建立有状态的会话（本质无状态）   http是基于TCP协议的，因为TCP协">
+<meta name="description" content="http协议  http协议 - 超文本传输协议， 是基于TCP&#x2F;IP的应用层协议，它不涉及数据包传输，主要规定了客户端和服务器之间的通信格式  基本性质： 简单：设计简单，报文容易阅读   可拓展： 客户端和服务端可以拓展http headers，拓展功能  无状态，有会话的： 两个http请求是不相关的，但是可以通过cookie来建立有状态的会话（本质无状态）   http是基于TCP协议的，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="http协议">
-<meta property="og:url" content="http://yoursite.com/2020/06/24/http%E5%8D%8F%E8%AE%AE%E5%B0%8F%E7%BB%93/index.html">
+<meta property="og:title" content="http&#x2F;https协议">
+<meta property="og:url" content="http://yoursite.com/2020/06/24/http%E5%8D%8F%E8%AE%AE/index.html">
 <meta property="og:site_name" content="萤火虫去哪了">
-<meta property="og:description" content="http协议 - 超文本传输协议， 是基于TCP&#x2F;IP的应用层协议，它不涉及数据包传输，主要规定了客户端和服务器之间的通信格式  基本性质： 简单：设计简单，报文容易阅读   可拓展： 客户端和服务端可以拓展http headers，拓展功能  无状态，有会话的： 两个http请求是不相关的，但是可以通过cookie来建立有状态的会话（本质无状态）   http是基于TCP协议的，因为TCP协">
+<meta property="og:description" content="http协议  http协议 - 超文本传输协议， 是基于TCP&#x2F;IP的应用层协议，它不涉及数据包传输，主要规定了客户端和服务器之间的通信格式  基本性质： 简单：设计简单，报文容易阅读   可拓展： 客户端和服务端可以拓展http headers，拓展功能  无状态，有会话的： 两个http请求是不相关的，但是可以通过cookie来建立有状态的会话（本质无状态）   http是基于TCP协议的，">
 <meta property="og:image" content="https://i.loli.net/2020/06/24/LeAhDXQkFYNC1o2.png">
 <meta property="article:published_time" content="2020-06-24T15:15:51.000Z">
-<meta property="article:modified_time" content="2020-06-24T15:16:52.110Z">
+<meta property="article:modified_time" content="2020-06-26T08:32:29.911Z">
 <meta property="article:author" content="朱杰">
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="http">
+<meta property="article:tag" content="https">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/06/24/LeAhDXQkFYNC1o2.png">
 
@@ -122,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/06/24/http协议小结/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/06/24/http协议/"/>
 
 
 
 
 
-  <title>http协议 | 萤火虫去哪了</title>
+  <title>http/https协议 | 萤火虫去哪了</title>
   
 
 
@@ -265,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/http%E5%8D%8F%E8%AE%AE%E5%B0%8F%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/http%E5%8D%8F%E8%AE%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="朱杰">
@@ -282,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">http协议</h1>
+          <h1 class="post-title" itemprop="name headline">http/https协议</h1>
         
 
         <div class="post-meta">
@@ -354,7 +355,7 @@
       
 
       
-        <blockquote>
+        <h2 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h2><blockquote>
 <p> http协议 - 超文本传输协议， 是基于TCP/IP的应用层协议，它不涉及数据包传输，主要规定了客户端和服务器之间的通信格式</p>
 </blockquote>
 <h3 id="基本性质："><a href="#基本性质：" class="headerlink" title="基本性质："></a>基本性质：</h3><ul>
@@ -394,6 +395,29 @@
 <h4 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h4><p>一个TCP链接中可以存在多个流，换句话说也就是可以发送多个请求，可以把每个请求当作一个流</p>
 <p><strong>同域名下所有通信都在单个连接上完成，该连接可以承载任意数量的双向数据流。</strong>每个数据流都以消息的形式发送，而消息又由一个或多个帧组成。多个帧之间可以乱序发送，根据帧首部的流标识可以重新组装。</p>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>HTTP 报文是使用 HTTP 的关键；它们的结构简单，并且具有高可扩展性。HTTP/2 帧机制是在 HTTP/1.x 语法和底层传输协议之间增加了一个新的中间层（大概是从数据到帧和流的转化层），而没有从根本上修改它，即它是建立在经过验证的机制之上</p>
+<h2 id="关于https"><a href="#关于https" class="headerlink" title="关于https"></a>关于https</h2><p>对于http链接来说，传输的信息是铭文传输的，相当于裸奔状态，若链接被劫持，则传输的信息就会有着泄漏的风险，所以如何保证传输信息的安全，这便是需要https的缘由了</p>
+<p>https协议，可以理解为HTTP+SSL/TSL（目前广泛TSL1.1/TSL1.2），即在TCP和HTTP层之间家了一层SSL/TSL层</p>
+<h4 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h4><p>对称加密： 加密/解密全用一个公钥</p>
+<p>非对称加密： 用公钥加密，私钥解密（安全性强，性能较低，例如RSA）</p>
+<p>如何对http中报文进行加密呢？</p>
+<ul>
+<li>第一种方式： </li>
+</ul>
+<p>​        <strong>对称加密，全部使用公钥</strong>，即第一次请求服务器时，服务器返回相应的公钥，用于给客户端报文进行加密，后续在服务端解密，但是这种方式若第一次请求时被拦截，让拦截者获取了传输的公钥，则报文信息同样会泄漏</p>
+<ul>
+<li>第二种方式： </li>
+</ul>
+<p>​        <strong>先通过非对称加密获得公钥，后续通过对称加密对报文加密</strong>。即客户端首次请求时获取到服务器的公钥T，通过该公钥对自己客户端生成的一个公钥K进行加密，传输给服务端，服务端通过私钥解密获得K，后续的传输过程中便全用K进行加密解密。但是这种方式同样也会有风险，若劫持者在首次请求过程中，将服务端返回的公钥T替换为自己的公钥Y，发送给客户端，客户端K经过Y加密后，发送给了拦截者，拦截者通过自己对应的私钥解密，照样获得了公钥K</p>
+<ul>
+<li>第三种方式（安全，可靠）：</li>
+</ul>
+<p>​        <strong>引入第三方，权威证书颁发机构（CA）</strong>。首先服务端会先将公钥key1发送给机构申请证书，机构会通过他的密钥生成签名，该签名中包含了服务器网址以及其他一系列信息，然后会将该签名发送给客户端，客户端中，<strong>各大浏览器和操作系统已经维护了所有权威证书机构的名称和公钥</strong>，在客户端获得对应机构的公钥，并且根据签名规则来校验该签名是否有效。验证成功后，客户端解密出证书签名，同时客户端生成堆成加密的密钥K，通过key1对K进行加密，发往服务器，在服务端通过自己的密钥对其进行解密，获得后续传输的对称加密的K。</p>
+<blockquote>
+<p>关于公钥和私钥的理解</p>
+<p>让对方任意想一个3位数，并把这个数和91相乘，然后告诉我积的最后三位数，我就可以猜出对方想的是什么数字啦！比如对方想的是123，那么对方就计算出123 * 91等于11193，并把结果的末三位193告诉我。看起来，这么做似乎损失了不少信息，让我没法反推出原来的数。不过，我仍然有办法：只需要把对方告诉我的结果再乘以11，乘积的末三位就是对方刚开始想的数了。可以验证一下，193 * 11 = 2123，末三位正是对方所想的秘密数字！</p>
+<p>其实道理很简单，91乘以11等于1001，而任何一个三位数乘以1001后，末三位显然都不变（例如123乘以1001就等于123123）。</p>
+<p>知道原理后，我们可以构造一个定义域和值域更大的加密解密系统。比方说，任意一个数乘以400000001后，末8位都不变，而400000001 = 19801 * 20201，于是你来乘以19801，我来乘以20201，又一个加密解密不对称的系统就构造好了。</p>
+</blockquote>
 
       
     </div>
@@ -414,6 +438,8 @@
             <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
           
             <a href="/tags/http/" rel="tag"># http</a>
+          
+            <a href="/tags/https/" rel="tag"># https</a>
           
         </div>
       
@@ -541,7 +567,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -584,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本性质："><span class="nav-number">1.</span> <span class="nav-text">基本性质：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于http请求格式"><span class="nav-number">2.</span> <span class="nav-text">关于http请求格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过http能做什么"><span class="nav-number">3.</span> <span class="nav-text">通过http能做什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于http-1-0"><span class="nav-number">4.</span> <span class="nav-text">关于http&#x2F;1.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于http-1-1"><span class="nav-number">5.</span> <span class="nav-text">关于http&#x2F;1.1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于http-2"><span class="nav-number">6.</span> <span class="nav-text">关于http&#x2F;2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多路复用"><span class="nav-number">6.1.</span> <span class="nav-text">多路复用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">7.</span> <span class="nav-text">结论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#http协议"><span class="nav-number">1.</span> <span class="nav-text">http协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本性质："><span class="nav-number">1.1.</span> <span class="nav-text">基本性质：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于http请求格式"><span class="nav-number">1.2.</span> <span class="nav-text">关于http请求格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过http能做什么"><span class="nav-number">1.3.</span> <span class="nav-text">通过http能做什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于http-1-0"><span class="nav-number">1.4.</span> <span class="nav-text">关于http&#x2F;1.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于http-1-1"><span class="nav-number">1.5.</span> <span class="nav-text">关于http&#x2F;1.1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于http-2"><span class="nav-number">1.6.</span> <span class="nav-text">关于http&#x2F;2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多路复用"><span class="nav-number">1.6.1.</span> <span class="nav-text">多路复用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">1.7.</span> <span class="nav-text">结论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于https"><span class="nav-number">2.</span> <span class="nav-text">关于https</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#加密算法"><span class="nav-number">2.0.1.</span> <span class="nav-text">加密算法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
