@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="node.js," />
 
 
 
@@ -79,14 +79,21 @@
 
 
 
-<meta name="description" content="step by step">
-<meta property="og:type" content="website">
-<meta property="og:title" content="萤火虫去哪了">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta name="description" content="Q  为什么在浏览器中运行的Javascript能与操作系统进行如此底层的交互？ nodejs 真的是单线程吗？ 如果是单线程，他是如何处理高并发请求的？ nodejs 事件驱动是如何实现的？   NODE.js  Node is a runtime environment for executing JavaScript Code.  Node 既不是一种语言，也不是一个框架，而是一个能执行 J">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js概览">
+<meta property="og:url" content="http://yoursite.com/2020/07/28/Node-js%E6%A6%82%E8%A7%88/index.html">
 <meta property="og:site_name" content="萤火虫去哪了">
-<meta property="og:description" content="step by step">
+<meta property="og:description" content="Q  为什么在浏览器中运行的Javascript能与操作系统进行如此底层的交互？ nodejs 真的是单线程吗？ 如果是单线程，他是如何处理高并发请求的？ nodejs 事件驱动是如何实现的？   NODE.js  Node is a runtime environment for executing JavaScript Code.  Node 既不是一种语言，也不是一个框架，而是一个能执行 J">
+<meta property="og:image" content="https://i.loli.net/2020/07/28/QLBIveVTc2uDb3U.png">
+<meta property="og:image" content="http://imweb-io-1251594266.cos.ap-guangzhou.myqcloud.com/043bd1dbad0f8b9245861dc51fdfaecb.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/30/6yYWzRoTfNs9Hpx.png">
+<meta property="article:published_time" content="2020-07-28T10:05:56.000Z">
+<meta property="article:modified_time" content="2020-07-28T10:08:19.075Z">
 <meta property="article:author" content="朱杰">
+<meta property="article:tag" content="node.js">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/07/28/QLBIveVTc2uDb3U.png">
 
 
 
@@ -116,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/3/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/07/28/Node-js概览/"/>
 
 
 
 
 
-  <title>萤火虫去哪了</title>
+  <title>Node.js概览 | 萤火虫去哪了</title>
   
 
 
@@ -141,8 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -245,9 +251,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -260,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/TCP%E5%8D%8F%E8%AE%AE/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/28/Node-js%E6%A6%82%E8%A7%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="朱杰">
@@ -277,9 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/10/TCP%E5%8D%8F%E8%AE%AE/" itemprop="url">TCP协议</a></h1>
+          <h1 class="post-title" itemprop="name headline">Node.js概览</h1>
         
 
         <div class="post-meta">
@@ -291,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T20:58:12+08:00">
-                2019-12-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-28T18:05:56+08:00">
+                2020-07-28
               </time>
             
 
@@ -314,8 +318,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
+                  <a href="/categories/node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">node.js</span>
                   </a>
                 </span>
 
@@ -351,28 +355,54 @@
       
 
       
-        
-          
-          TCP协议的特点
-TCP是面向连接的传输层协议
-每条TCP连接只能有两个端点，每个端点叫做套接字socket(IP:端口)
-提供可靠支付的服务
-全双工通信
-面向字节流
+        <h3 id="Q"><a href="#Q" class="headerlink" title="Q"></a>Q</h3><blockquote>
+<ul>
+<li>为什么在浏览器中运行的Javascript能与操作系统进行如此底层的交互？</li>
+<li>nodejs 真的是单线程吗？</li>
+<li>如果是单线程，他是如何处理高并发请求的？</li>
+<li>nodejs 事件驱动是如何实现的？</li>
+</ul>
+</blockquote>
+<h2 id="NODE-js"><a href="#NODE-js" class="headerlink" title="NODE.js"></a>NODE.js</h2><blockquote>
+<p> Node is a runtime environment for executing JavaScript Code.</p>
+<p> Node 既不是一种语言，也不是一个框架，而是一个能执行 JavaScript 代码的运行时环境</p>
+</blockquote>
+<blockquote>
+<p>Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.</p>
+<p><strong>事件驱动、非阻塞I/O</strong>、高效、轻量</p>
+</blockquote>
+<p>在浏览器中，各个浏览器通过不同的js引擎来将我们的javascript代码转化为浏览器可以识别的代码，其中最有名的就属于chrome的v8引擎了。</p>
+<p>那么如果在一个c++ 程序中引入v8引擎，使得javascript代码可以在我们的c++程序中执行，那么，这个程序就是Node</p>
+<p>node实质上就是一个C++经过编译过后的可执行文件</p>
+<h3 id="关于Node的目录及架构"><a href="#关于Node的目录及架构" class="headerlink" title="关于Node的目录及架构"></a>关于Node的目录及架构</h3><ul>
+<li>deps：包含了node所依赖的库，包括v8/libuv等等 </li>
+<li>src： 内建模块</li>
+<li>lib： 核心模块（fs/http/等等）</li>
+</ul>
+<p>（<a href="https://github.com/nodejs/node）" target="_blank" rel="noopener">https://github.com/nodejs/node）</a></p>
+<p><img src="https://i.loli.net/2020/07/28/QLBIveVTc2uDb3U.png" alt="企业微信截图_320bd20e-302f-4f50-ba57-bce542f8ed4a.png"></p>
+<ul>
+<li>v8: Google 推出的 Javascript VM，也是 Node.js 为什么使用的是 Javascript的关键，它为 Javascript提供了在非浏览器端运行的环境，它的高效是 Node.js 之所以高效的原因之一</li>
+<li>libuv: 聚焦于io的库（事件循环）,它为 Node.js 提供了跨平台，线程池，事件池，异步 I/O 等能力，是 Node.js 如此强大的关键</li>
+<li>process.binding: js与底层C/C++交互的桥梁</li>
+</ul>
+<h3 id="与操作系统的交互"><a href="#与操作系统的交互" class="headerlink" title="与操作系统的交互"></a>与操作系统的交互</h3><p>当我们执行一个node read的过程中，具体发生了什么<br>这个过程可以大致描述为： lib/fs.js → src/node_file.cc → uv_fs</p>
+<p><img src="http://imweb-io-1251594266.cos.ap-guangzhou.myqcloud.com/043bd1dbad0f8b9245861dc51fdfaecb.png" alt=""></p>
+<p>具体来说，当我们调用 fs.open 时，Node.js 通过 process.binding 调用 C/C++ 层面的 Open 函数，然后通过它调用 Libuv 中的具体方法 uv_fs_open，最后执行的结果通过回调的方式传回，完成流程。</p>
+<p>我们在 Javascript中调用的方法，最终都会通过 process.binding 传递到 C/C++ 层面，最终由他们来执行真正的操作。Node.js 即这样与操作系统进行互动。</p>
+<h3 id="单线程-多线程"><a href="#单线程-多线程" class="headerlink" title="单线程?多线程?"></a>单线程?多线程?</h3><p>Node.js的单线程指的是主线程是“单线程”，由主要线程去按照编码顺序一步步执行程序代码，假如遇到同步代码阻塞，主线程被占用，后续的程序代码执行就会被卡住。</p>
+<blockquote>
+<p>server - client</p>
+</blockquote>
+<p>那对于量级的并发，node如何处理?</p>
+<h4 id="事件驱动"><a href="#事件驱动" class="headerlink" title="事件驱动"></a>事件驱动</h4><p><strong>node.js的运行机制</strong></p>
+<p><img src="https://i.loli.net/2020/04/30/6yYWzRoTfNs9Hpx.png" alt="企业微信截图_15882155039546.png"></p>
+<p>1、每个Node.js进程只有一个主线程在执行程序代码，形成一个执行栈（execution context stack)。</p>
+<p>2、主线程之外，还维护了一个”事件队列”（Event queue）。当用户的网络请求或者其它的异步操作到来时，node都会把它放到Event Queue之中，此时并不会立即执行它，代码也不会被阻塞，继续往下走，直到主线程代码执行完毕。</p>
+<p>3、主线程代码执行完毕完成后，然后通过Event Loop，也就是事件循环机制，开始到Event Queue的开头取出第一个事件，从线程池中分配一个线程去执行这个事件，接下来继续取出第二个事件，再从线程池中分配一个线程去执行，然后第三个，第四个。主线程不断的检查事件队列中是否有未执行的事件，直到事件队列中所有事件都执行完了，此后每当有新的事件加入到事件队列中，都会通知主线程按顺序取出交EventLoop处理。当有事件执行完毕后，会通知主线程，主线程执行回调，线程归还给线程池。</p>
+<p>4、主线程不断重复上面的第三步。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>我们所看到的node.js单线程只是一个js主线程，本质上的异步操作还是由线程池完成的，node将所有的阻塞操作都交给了内部的线程池去实现，本身只负责不断的往返调度，并没有进行真正的I/O操作，从而实现异步非阻塞I/O，这便是node单线程和事件驱动的精髓之处了。</p>
 
-TCP报文段的首部
-
-序号ack： 本报文段索要发送数据的第一个字节的序号
-确认号seq： 期望收到对方下一个报文段的第一个数据字
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/12/10/TCP%E5%8D%8F%E8%AE%AE/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
       
     </div>
     
@@ -387,175 +417,36 @@ TCP报文段的首部
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/08/hexo%E7%BC%96%E8%BE%91%E4%B8%8A%E4%BC%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="朱杰">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="萤火虫去哪了">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/08/hexo%E7%BC%96%E8%BE%91%E4%B8%8A%E4%BC%A0/" itemprop="url">hexo编辑上传</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-08T15:29:08+08:00">
-                2019-12-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/node-js/" rel="tag"># node.js</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          
-          hexo创建上传笔记创建
-hexo n “name”
-设置tags标签，用[aaa,bb]格式
-设置categories标签创建分类或者归属分类，[aa,bb]格式创建
-编辑新创建的文件，保存
-
-本地预览常用命令
-hexo clean 清除缓存
-
-hexo s 启动本地服务
-
-
-推送
-hexo g 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/12/08/hexo%E7%BC%96%E8%BE%91%E4%B8%8A%E4%BC%A0/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/20/koa-router%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90/" rel="next" title="koa-router深入解析">
+                <i class="fa fa-chevron-left"></i> koa-router深入解析
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -565,14 +456,11 @@ hexo g
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -580,6 +468,10 @@ hexo g
 
 
           
+
+  
+
+
 
         </div>
         
@@ -600,8 +492,17 @@ hexo g
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -675,6 +576,22 @@ hexo g
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q"><span class="nav-number">1.</span> <span class="nav-text">Q</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NODE-js"><span class="nav-number"></span> <span class="nav-text">NODE.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于Node的目录及架构"><span class="nav-number">1.</span> <span class="nav-text">关于Node的目录及架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与操作系统的交互"><span class="nav-number">2.</span> <span class="nav-text">与操作系统的交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单线程-多线程"><span class="nav-number">3.</span> <span class="nav-text">单线程?多线程?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事件驱动"><span class="nav-number">3.1.</span> <span class="nav-text">事件驱动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结："><span class="nav-number">4.</span> <span class="nav-text">总结：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -797,6 +714,10 @@ hexo g
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
